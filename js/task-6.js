@@ -14,11 +14,14 @@ function createBoxes(amount) {
     let boxSize = 30;
     let newBoxes = [];
     for (let i = 1; i <= amount; i++) {
-        const newBox = `<div style="width: ${boxSize}px; height: ${boxSize}px; background-color: ${getRandomHexColor()}"></div>`;
+        const newBox = document.createElement("div");
+        newBox.style.width = `${boxSize}px`;
+        newBox.style.height = `${boxSize}px`;
+        newBox.style.backgroundColor = getRandomHexColor();
         boxSize += i * 10;
         newBoxes.push(newBox);
     }
-    output.innerHTML = newBoxes.join("");
+    output.append(...newBoxes);
 }
 
 function destroyBoxes() {
